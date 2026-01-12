@@ -23,6 +23,9 @@ function App(){
 }*/
 
 import { useState, useEffect } from "react";
+import Header from "./components/Header";
+import TimerDisplay from "./components/TimerDisplay";
+import Controls from "./components/Controls";
 
 function App() {
   const [status, setStatus] = useState("idle");   // idle | running | paused
