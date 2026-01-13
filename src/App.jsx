@@ -22,41 +22,35 @@ function App(){
   );
 }*/
 
-import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import TimerDisplay from "./components/TimerDisplay";
 import Controls from "./components/Controls";
+import { useTimer } from "./hooks/useTimer";
+
 
 function App() {
-  const [status, setStatus] = useState("idle");   // idle | running | paused
-  const [timeLeft, setTimeLeft] = useState(1500); // 25 minutes in seconds
-
-  useEffect(() => {
-    if (status !== "running") return;
-
-    const interval = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          setStatus("idle");
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [status]);
+  const {
+    status,
+    timeLeft,
+    start,
+    pause,
+    reset,
+  } = useTimer(1500);
 
   return (
     <div>
-      <h1>Focus Mode Studio</h1>
+      <Header />
 
-      <p>Status: {status}</p>
-      <p>Time left: {timeLeft} seconds</p>
+      <TimerDisplay
+        status={status}
+        timeLeft={timeLeft}
+      />
 
-      <button onClick={() => setStatus("running")}>Start</button>
-      <button onClick={() => setStatus("paused")}>Pause</button>
-      <button onClick={() => setStatus("idle")}>Reset</button>
+      <Controls
+        onStart={start}
+        onPause={pause}
+        onReset={reset}
+      />
     </div>
   );
 }
