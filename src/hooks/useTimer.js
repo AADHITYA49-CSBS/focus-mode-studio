@@ -1,37 +1,34 @@
 import { useState, useEffect } from "react";
 
-export function useTimer(initialTime = 1500) {
+
+
+export function useTimer(initialSeconds) {
   const [status, setStatus] = useState("idle");
-  const [timeLeft, setTimeLeft] = useState(initialTime);
+  const [timeLeft, setTimeLeft] = useState(initialSeconds);
 
   useEffect(() => {
     if (status !== "running") return;
 
     const interval = setInterval(() => {
-      setTimeLeft(prev => {
+      setTimeLeft((prev) => {
         if (prev <= 1) {
+          clearInterval(interval);
           setStatus("idle");
-          return 0;
+          return initialSeconds;
         }
         return prev - 1;
       });
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [status]);
+  }, [status, initialSeconds]);
 
   const start = () => setStatus("running");
   const pause = () => setStatus("paused");
   const reset = () => {
     setStatus("idle");
-    setTimeLeft(initialTime);
+    setTimeLeft(initialSeconds);
   };
 
-  return {
-    status,
-    timeLeft,
-    start,
-    pause,
-    reset,
-  };
+  return { status, timeLeft, start, pause, reset };
 }

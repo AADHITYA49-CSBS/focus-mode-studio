@@ -1,10 +1,8 @@
-import { formatTime } from "../utils/formatTime";
-
-function TimerDisplay({ timeLeft, status }) {
+function TimerDisplay({ status, timeLeft }) {
   return (
     <div>
-      <p>Status: {status}</p>
-      <p>Time left: {formatTime(timeLeft)}</p>
+      <h2>{status}</h2>
+      <p>{timeLeft}</p>
     </div>
   );
 }

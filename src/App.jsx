@@ -22,31 +22,37 @@ function App(){
   );
 }*/
 
+import { useEffect } from "react";
 import Header from "./components/Header";
 import TimerDisplay from "./components/TimerDisplay";
 import Controls from "./components/Controls";
 import { useTimer } from "./hooks/useTimer";
 
-
 function App() {
-  const {
-    status,
-    timeLeft,
-    start,
-    pause,
-    reset,
-  } = useTimer(1500);
+  const { status, timeLeft, start, pause, reset } = useTimer(1500);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.code === "Space") {
+        e.preventDefault();
+        status === "running" ? pause() : start();
+      }
+
+      if (e.key.toLowerCase() === "r") {
+        reset();
+      }
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [status, start, pause, reset]);
 
   return (
     <div>
       <Header />
-
-      <TimerDisplay
-        status={status}
-        timeLeft={timeLeft}
-      />
-
+      <TimerDisplay status={status} timeLeft={timeLeft} />
       <Controls
+        status={status}
         onStart={start}
         onPause={pause}
         onReset={reset}
