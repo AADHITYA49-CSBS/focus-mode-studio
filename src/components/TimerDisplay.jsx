@@ -1,10 +1,8 @@
-function TimerDisplay({ status, timeLeft }) {
+export default function TimerDisplay({ status, timeLeft }) {
   return (
-    <div>
-      <h2>{status}</h2>
-      <p>{timeLeft}</p>
+    <div className={`timer ${status}`}>
+      <p className="status">{status.toUpperCase()}</p>
+      <h2 className="time">{timeLeft}s</h2>
     </div>
   );
 }
-
-export default TimerDisplay;

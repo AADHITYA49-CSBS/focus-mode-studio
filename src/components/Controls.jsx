@@ -1,19 +1,15 @@
-function Controls({ status, onStart, onPause, onReset }) {
+export default function Controls({ status, onStart, onPause, onReset }) {
   return (
-    <div>
-      <button onClick={onStart} disabled={status === "running"}>
-        Start
-      </button>
+    <div className="controls">
+      {status !== "running" && (
+        <button className="primary" onClick={onStart}>Start</button>
+      )}
 
-      <button onClick={onPause} disabled={status !== "running"}>
-        Pause
-      </button>
+      {status === "running" && (
+        <button className="primary" onClick={onPause}>Pause</button>
+      )}
 
-      <button onClick={onReset} disabled={status === "idle"}>
-        Reset
-      </button>
+      <button className="secondary" onClick={onReset}>Reset</button>
     </div>
   );
 }
-
-export default Controls;

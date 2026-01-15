@@ -47,18 +47,19 @@ function App() {
     return () => window.removeEventListener("keydown", handleKey);
   }, [status, start, pause, reset]);
 
-  return (
-    <div>
-      <Header />
-      <TimerDisplay status={status} timeLeft={timeLeft} />
-      <Controls
-        status={status}
-        onStart={start}
-        onPause={pause}
-        onReset={reset}
-      />
-    </div>
-  );
+return (
+  <div className="app">
+    <Header />
+    <TimerDisplay status={status} timeLeft={timeLeft} />
+    <Controls
+      status={status}
+      onStart={start}
+      onPause={pause}
+      onReset={reset}
+    />
+  </div>
+);
+
 }
 
 export default App;

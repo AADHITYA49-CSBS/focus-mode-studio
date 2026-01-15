@@ -1,15 +1,87 @@
+:root {
+  --bg: #0f172a;
+  --card: #020617;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --danger: #ef4444;
+  --success: #22c55e;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  background:  #f5f5f5;
-  color:     #0f0f0f;
-  min-height: 100vh;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
+
+.app {
+  background: var(--card);
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 360px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.timer {
+  margin: 2rem 0;
+}
+
+.status {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+.time {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+/* State-based UI */
+.timer.running .time {
+  color: var(--success);
+}
+
+.timer.paused .time {
+  color: var(--accent);
+}
+
+.timer.idle .time {
+  color: var(--text);
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+button {
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.primary {
+  background: var(--accent);
+  color: #020617;
+}
+
+.secondary {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--muted);
+}
+ 
