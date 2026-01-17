@@ -84,4 +84,26 @@ button {
   color: var(--muted);
   border: 1px solid var(--muted);
 }
- 
+
+.session-list {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+  max-height: 120px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.session-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #1e293b;
+}
+
+.empty {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}

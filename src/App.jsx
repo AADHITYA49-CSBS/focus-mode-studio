@@ -26,10 +26,13 @@ import { useEffect } from "react";
 import Header from "./components/Header";
 import TimerDisplay from "./components/TimerDisplay";
 import Controls from "./components/Controls";
+import SessionStats from "./components/SessionStats";
+import SessionList from "./components/SessionList";
+
 import { useTimer } from "./hooks/useTimer";
 
 function App() {
-  const { status, timeLeft, start, pause, reset } = useTimer(1500);
+  const { status, timeLeft, start, pause, reset, sessions } = useTimer(1500);
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -47,19 +50,25 @@ function App() {
     return () => window.removeEventListener("keydown", handleKey);
   }, [status, start, pause, reset]);
 
-return (
-  <div className="app">
-    <Header />
-    <TimerDisplay status={status} timeLeft={timeLeft} />
-    <Controls
-      status={status}
-      onStart={start}
-      onPause={pause}
-      onReset={reset}
-    />
-  </div>
-);
+  return (
+    <div className="app">
+      <Header />
 
+      <TimerDisplay status={status} timeLeft={timeLeft} />
+
+      {/* ✅ Session statistics */}
+      <SessionStats sessions={sessions} />
+      <SessionList sessions={sessions} />
+
+
+      <Controls
+        status={status}
+        onStart={start}
+        onPause={pause}
+        onReset={reset}
+      />
+    </div>
+  );
 }
 
 export default App;
