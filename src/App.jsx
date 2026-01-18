@@ -28,12 +28,14 @@ import TimerDisplay from "./components/TimerDisplay";
 import Controls from "./components/Controls";
 import SessionStats from "./components/SessionStats";
 import SessionList from "./components/SessionList";
-
+import SessionSummary from "./components/SessionSummary";
+import DailyGoal from "./components/DailyGoal";
 import { useTimer } from "./hooks/useTimer";
 
 function App() {
   const { status, timeLeft, start, pause, reset, sessions } = useTimer(1500);
 
+  // Keyboard shortcuts
   useEffect(() => {
     const handleKey = (e) => {
       if (e.code === "Space") {
@@ -56,11 +58,15 @@ function App() {
 
       <TimerDisplay status={status} timeLeft={timeLeft} />
 
-      {/* ✅ Session statistics */}
+      {/* Focus insights */}
+      <SessionSummary sessions={sessions} />
+      <DailyGoal sessions={sessions} />
+
+      {/* Session data */}
       <SessionStats sessions={sessions} />
       <SessionList sessions={sessions} />
 
-
+      {/* Controls */}
       <Controls
         status={status}
         onStart={start}
