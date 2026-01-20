@@ -33,7 +33,10 @@ import DailyGoal from "./components/DailyGoal";
 import { useTimer } from "./hooks/useTimer";
 
 function App() {
-  const { status, timeLeft, start, pause, reset, sessions } = useTimer(1500);
+  const { status, timeLeft, mode, sessions, start, pause, reset } = useTimer(1500, 300);
+
+
+
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -56,7 +59,7 @@ function App() {
     <div className="app">
       <Header />
 
-      <TimerDisplay status={status} timeLeft={timeLeft} />
+      <TimerDisplay status={status} timeLeft={timeLeft} mode={mode}/>
 
       {/* Focus insights */}
       <SessionSummary sessions={sessions} />
