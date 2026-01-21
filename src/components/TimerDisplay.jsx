@@ -1,18 +1,23 @@
 import { formatTime } from "../utils/formatTime";
 
-export default function TimerDisplay({ status, timeLeft,mode }) {
-  let urgency = "normal";
-
-  if (timeLeft <= 60) urgency = "danger";
-  else if (timeLeft <= 300) urgency = "warning";
-
+export default function TimerDisplay({ status, timeLeft, mode }) {
   return (
-    <div className={`timer ${status} ${urgency}`}>
-      <p className="status">
-  {mode === "focus" ? "FOCUS MODE" : "BREAK TIME"}
-</p>
+    <div className={`timer ${mode} ${status}`}>
+      <span className="mode-badge">
+        {mode === "focus" ? "FOCUS" : "BREAK"}
+      </span>
 
-      <h2 className="time">{formatTime(timeLeft)}</h2>
+      <h2 className="time">
+        {formatTime(timeLeft)}
+      </h2>
+
+      <p className="status-text">
+        {status === "running"
+          ? "Stay focused."
+          : status === "paused"
+          ? "Paused."
+          : "Ready when you are."}
+      </p>
     </div>
   );
 }

@@ -182,3 +182,37 @@ button {
   50% { opacity: 0.6; }
   100% { opacity: 1; }
 }
+
+.timer {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 16px;
+  margin: 2rem 0;
+  transition: all 0.3s ease;
+}
+
+.timer.focus {
+  background: #0f172a; /* calm dark blue */
+}
+
+.timer.break {
+  background: #052e16; /* relaxed green */
+}
+
+.mode-badge {
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.time {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.status-text {
+  margin-top: 0.5rem;
+  opacity: 0.6;
+}
