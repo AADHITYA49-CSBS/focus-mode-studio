@@ -1,16 +1,97 @@
-# React + Vite
+# 🎯 Focus Mode Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist focus timer built with React to help you work deeply, track focus sessions, and build discipline.
 
-Currently, two official plugins are available:
+> Your mind. One task. Zero noise.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ⏱️ Focus & Break cycles (Pomodoro-style)
+- 🔁 Automatic mode switching (Focus → Break)
+- 📊 Session tracking (stored in LocalStorage)
+- 🎯 Daily focus goals
+- ⌨️ Keyboard shortcuts
+- 🧠 Clean separation of logic & UI using custom hooks
+- ⚡ Built with Vite + React
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⌨️ Keyboard Shortcuts
+
+| Key | Action |
+|----|-------|
+| Space | Start / Pause timer |
+| R | Reset session |
+
+---
+
+## 🧠 Core Concepts Used
+
+- `useState` – state management
+- `useEffect` – timer & side effects
+- Custom Hook (`useTimer`) – reusable business logic
+- Component-based architecture
+- LocalStorage persistence
+- Utility functions (`formatTime`)
+- Controlled components
+- Conditional rendering
+
+---
+
+## 📁 Project Structure
+
+src/
+├── components/
+│ ├── Header.jsx
+│ ├── TimerDisplay.jsx
+│ ├── Controls.jsx
+│ ├── SessionStats.jsx
+│ ├── SessionList.jsx
+│ ├── SessionSummary.jsx
+│ └── DailyGoal.jsx
+│
+├── hooks/
+│ └── useTimer.js
+│
+├── utils/
+│ └── formatTime.js
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+
+
+---
+
+## 🚀 Running Locally
+
+```bash
+npm install
+npm run dev
+
+🧪 Version
+
+v1.0 — Stable frontend release
+
+This version focuses on:
+
+Learning React fundamentals deeply
+
+Clean architecture
+
+Intentional UI
+
+🔮 Planned (Next Versions)
+
+Backend (Node + Express)
+
+User accounts
+
+Analytics dashboard
+
+Cloud sync
+
+Mobile-friendly layout
+
